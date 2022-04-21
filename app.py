@@ -28,7 +28,10 @@ with st.form(key="my_form"):
           for i in transcript:
               text += ' ' + i['text']
 
-          summarizer = pipeline('summarization', model='facebook/bart-large-cnn', max_length=100)
+          st.write("Preparing your summary...")
+          st.write("Transformer at work...")
+          summarizer = pipeline('summarization')
+          
           num_iters = int(len(text)/1000)
           summarized_text = []
           for i in range(0, num_iters + 1):
