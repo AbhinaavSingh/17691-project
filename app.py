@@ -66,7 +66,7 @@ with st.form(key="my_form"):
         submitted = st.form_submit_button(label="Summarize")
         if submitted:
             st.write(uploaded_video)
-            g = io.BytesIO(uploaded_file.read())  ## BytesIO Object
+            g = io.BytesIO(uploaded_video.read())  ## BytesIO Object
             temporary_location = uploaded_video.name
 
             with open(temporary_location, 'wb') as out:  ## Open temporary file as bytes
