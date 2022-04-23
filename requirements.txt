@@ -1,7 +1,4 @@
-seaborn
-matplotlib
-streamlit == 0.87
-pandas == 1.2.4
-keybert
 transformers
 youtube_transcript_api
+SpeechRecognition
+pydub
