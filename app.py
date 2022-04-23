@@ -9,7 +9,7 @@ from moviepy.editor import AudioFileClip
 import speech_recognition as sr 
 from pydub import AudioSegment
 from pydub.silence import split_on_silence
-
+import io
 
 st.set_page_config(
     page_title="Video Transcript Summarizer",
