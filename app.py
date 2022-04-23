@@ -26,8 +26,10 @@ with st.form(key="my_form"):
                 "Research Video", ("Yes", "No")
             )
 
-    if video_type=="YouTube":
-        video = st.text_input("YouTube video URL")
+    youtube_video = st.text_input("YouTube video URL")
+    uploaded_video = st.file_uploader(label="Upload your video")
+    
+    if video_type=="YouTube" and youtube_video is not None:
         submitted = st.form_submit_button(label="Summarize")
         if submitted:
           video_id = video.split("=")[1]
@@ -52,8 +54,8 @@ with st.form(key="my_form"):
           st.write("SUMMARY")
           st.write(str(summarized_text))
 
-    if video_type=="Video Upload":
-        video = st.file_uploader(label="Upload your video")
-        if video is not None:
+    if video_type=="Video Upload" and uploaded_video is not None:
+        submitted = st.form_submit_button(label="Summarize")
+        if submitted:
             st.write(video)
 
