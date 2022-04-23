@@ -22,7 +22,7 @@ st.title("Video transcript Summarizer!")
 
 
 
-with st.form(key="my_form"):
+with st.form(key="my_form", clear_on_submit=True):
     col1, col2 = st.columns(2)
     
     with col1:
