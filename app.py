@@ -12,13 +12,13 @@ st.set_page_config(
 st.title("Video transcript Summarizer!")
 
 with st.form(key="my_form"):
-    is_youtube_video = st.radio(
-                "Is this a YouTube video?",
-                ["Yes", "No"],
-                help="At present, you can choose to summarize either a YouTube video or a custom video that you upload",
+    video_type = st.radio(
+                "Select video type",
+                ["YouTube", "Video Upload"],
+                help="You can choose to summarize either a YouTube video or a custom video that you upload",
             )
 
-    if is_youtube_video=="Yes":
+    if video_type=="YouTube":
       video = st.text_input("YouTube video URL")
       submitted = st.form_submit_button(label="Summarize")
       if submitted:
@@ -44,3 +44,8 @@ with st.form(key="my_form"):
           st.write("SUMMARY")
           st.write(str(summarized_text))
 
+    if video_type=='Video Upload":
+        video = st.file_uploader(label="Upload your video")
+        if video is not None:
+            st.write("video")
+    
