@@ -44,7 +44,7 @@ with st.form(key="my_form"):
           st.write("SUMMARY")
           st.write(str(summarized_text))
 
-    if video_type=='Video Upload":
+    if video_type=="Video Upload":
         video = st.file_uploader(label="Upload your video")
         if video is not None:
             st.write("video")
