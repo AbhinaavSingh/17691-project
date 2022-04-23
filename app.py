@@ -24,9 +24,9 @@ with col2:
         )
 
 if video_type=="YouTube":
-video = st.text_input("YouTube video URL")
+  video = st.text_input("YouTube video URL")
 #submitted = st.form_submit_button(label="Summarize")
-if submitted:
+#if submitted:
   video_id = video.split("=")[1]
   transcript = YouTubeTranscriptApi.get_transcript(video_id)
   text = ""
