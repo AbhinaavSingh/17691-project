@@ -57,5 +57,5 @@ with st.form(key="my_form"):
     if video_type=="Video Upload" and uploaded_video is not None:
         submitted = st.form_submit_button(label="Summarize")
         if submitted:
-            st.write(video)
+            st.write(uploaded_video)
 
