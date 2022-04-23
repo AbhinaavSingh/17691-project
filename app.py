@@ -32,7 +32,7 @@ with st.form(key="my_form"):
     if video_type=="YouTube" and youtube_video is not None:
         submitted = st.form_submit_button(label="Summarize")
         if submitted:
-          video_id = video.split("=")[1]
+          video_id = youtube_video.split("=")[1]
           transcript = YouTubeTranscriptApi.get_transcript(video_id)
           text = ""
           for i in transcript:
