@@ -77,7 +77,7 @@ with st.form(key="my_form"):
             clip = mp.VideoFileClip(uploaded_video.name) 
             clip.audio.write_audiofile("converted.wav")
             r = sr.Recognizer()
-            sound = AudioSegment.from_wav("converted_wav")  
+            sound = AudioSegment.from_wav("converted.wav")  
             chunks = split_on_silence(sound,
                 min_silence_len = 500,
                 silence_thresh = sound.dBFS-14,
