@@ -47,5 +47,5 @@ with st.form(key="my_form"):
     if video_type=="Video Upload":
         video = st.file_uploader(label="Upload your video")
         if video is not None:
-            st.write("video")
+            st.write(video)
     
