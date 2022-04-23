@@ -58,4 +58,41 @@ with st.form(key="my_form"):
         submitted = st.form_submit_button(label="Summarize")
         if submitted:
             st.write(uploaded_video)
+            clip = mp.VideoFileClip(uploaded_video) 
+            clip.audio.write_audiofile("converted.wav")
+            r = sr.Recognizer()
+            sound = AudioSegment.from_wav("converted_wav")  
+            chunks = split_on_silence(sound,
+                min_silence_len = 500,
+                silence_thresh = sound.dBFS-14,
+                keep_silence=500,
+            )
+            folder_name = "audio-chunks"
+            if not os.path.isdir(folder_name):
+                os.mkdir(folder_name)
+            whole_text = ""
+            for i, audio_chunk in enumerate(chunks, start=1):
+                chunk_filename = os.path.join(folder_name, f"chunk{i}.wav")
+                audio_chunk.export(chunk_filename, format="wav")
+                with sr.AudioFile(chunk_filename) as source:
+                    audio_listened = r.record(source)
+                    try:
+                        text = r.recognize_google(audio_listened)
+                    except sr.UnknownValueError as e:
+                        print("Error:", str(e))
+                    else:
+                        text = f"{text.capitalize()}. "
+                        whole_text += text
+            summarizer = pipeline('summarization')
+          
+            num_iters = int(len(whole_text)/1000)
+            summarized_text = []
+            for i in range(0, num_iters + 1):
+              start = 0
+              start = i * 1000
+              end = (i + 1) * 1000
+              out = summarizer(whole_text[start:end])[0]['summary_text']
+              summarized_text.append(out)
+            st.write("SUMMARY")
+            st.write(str(summarized_text))
 
