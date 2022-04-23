@@ -66,7 +66,7 @@ with st.form(key="my_form"):
         submitted = st.form_submit_button(label="Summarize")
         if submitted:
             st.write(uploaded_video)
-            clip = mp.VideoFileClip(uploaded_video) 
+            clip = mp.VideoFileClip(uploaded_video.name) 
             clip.audio.write_audiofile("converted.wav")
             r = sr.Recognizer()
             sound = AudioSegment.from_wav("converted_wav")  
